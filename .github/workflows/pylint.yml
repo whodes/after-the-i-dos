@@ -16,15 +16,17 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Poetry
+      - name: Install Python Dependencies
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Ensure Poetry is in the PATH
+          python -m pip install --upgrade pip setuptools virtualenv
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v2
 
       - name: Install dependencies
         run: |
-          poetry install
+          poetry install --no-root
 
-      - name: Analysing the code with pylint
+      - name: Run Pylint
         run: |
           poetry run pylint $(git ls-files '*.py')
