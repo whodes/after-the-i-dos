@@ -1,5 +1,4 @@
-"""Utility functions for the application."""
-
+""" Utility functions for the application. """
 from flask import current_app as app
 
 from app.models import Message
@@ -14,10 +13,7 @@ def save_message(recording_url, caller):
         db.session.add(message)
         db.session.commit()
         app.logger.info(f"💾 Message saved: {recording_url}")
-    except ValueError as e:
-        app.logger.error(f"💥 Error saving message: {e}")
-        db.session.rollback()
-    except IOError as e:
+    except Exception as e:
         app.logger.error(f"💥 Error saving message: {e}")
         db.session.rollback()
 
