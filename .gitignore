@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdm.toml
+*.pdm.lock
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Environment variables
+.env
+*.env
+*.ini
+config.json
+
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# SQLite database files
+*.db
+*.sqlite
+*.sqlite3
+/data/
+
+# Flask migrations
+migrations/
+instance/
+
+
+# Log files
+*.log
+logs/
+debug.log
+
+# Profiling data
+*.prof
+*.lprof
