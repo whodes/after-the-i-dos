@@ -41,3 +41,8 @@ debug.log
 # Profiling data
 *.prof
 *.lprof
+
+
+# Poetry dependencies
+poetry.lock
+.pypoetry/
