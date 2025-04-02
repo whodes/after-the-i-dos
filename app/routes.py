@@ -1,9 +1,11 @@
+"""Routes for the application"""
+
 from flask import Blueprint, request, jsonify, Response, current_app
 from twilio.twiml.voice_response import VoiceResponse
 from app import db
 from app.models import Message
 from app.utils import save_message
-from app.services.twilio_service import client, VOICE_MESSAGE  # Import Twilio setup
+from app.services.twilio_service import VOICE_MESSAGE  # Import Twilio setup
 
 routes = Blueprint("routes", __name__)
 
@@ -40,12 +42,12 @@ def get_messages():
     return jsonify([messages.to_dict() for messages in messages])
 
 
-@routes.route("/messages/<int:id>", methods=["DELETE"])
-def delete_message(id):
+@routes.route("/messages/<int:message_id>", methods=["DELETE"])
+def delete_message(message_id):
     """Delete message by id"""
-    message = Message.query.get(id)
+    message = Message.query.get(message_id)
     if not message:
         return jsonify({"message": "message not found"}), 404
     db.session.delete(message)
     db.session.commit()
-    return jsonify({"message": "deleted message " + str(id)})
+    return jsonify({"message": "deleted message " + str(message_id)})
