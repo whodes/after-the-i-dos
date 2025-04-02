@@ -1,6 +1,7 @@
 from datetime import datetime
 from app.extensions import db
 
+
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -10,9 +11,9 @@ class Message(db.Model):
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'created_at': self.created_at.isoformat(),
-            'link': self.link,
-            'caller': self.caller,
-            'uploaded': self.uploaded
+            "id": self.id,
+            "created_at": self.created_at.isoformat(),
+            "link": self.link,
+            "caller": self.caller,
+            "uploaded": self.uploaded,
         }
