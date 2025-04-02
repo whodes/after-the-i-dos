@@ -12,6 +12,7 @@ flask-migrate = "^4.0.7"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
+pylint = "^3.3.6"
 
 [build-system]
 requires = ["poetry-core"]
